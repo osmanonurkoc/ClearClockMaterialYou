@@ -1,8 +1,3 @@
-/*
-    SPDX-FileCopyrightText: 2022 qewer33
-    SPDX-License-Identifier: GPL-3.0-or-later
-*/
-
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import Qt5Compat.GraphicalEffects
@@ -12,6 +7,7 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
+import org.kde.kirigami 2.20 as Kirigami
 
 PlasmoidItem {
     id: root
@@ -108,7 +104,7 @@ PlasmoidItem {
 
                 text: Qt.formatDate(currentDateTime, "dddd")
 
-                color: plasmoid.configuration.dayFontColor
+                color: Kirigami.Theme.highlightColor
                 font.family: if (plasmoid.configuration.dayFontFamily === "ccdefault") fontSmooch.name
                              else plasmoid.configuration.dayFontFamily
                 font.bold: plasmoid.configuration.dayBoldText
@@ -150,6 +146,13 @@ PlasmoidItem {
                 verticalOffset: plasmoid.configuration.dateShadowYOffset
                 samples: plasmoid.configuration.dateShadowYOffset*2
             }
+        }
+    }
+
+    Connections {
+        target: Kirigami.Theme
+        onThemeChanged: {
+            dayLabel.color = Kirigami.Theme.highlightColor
         }
     }
 }
