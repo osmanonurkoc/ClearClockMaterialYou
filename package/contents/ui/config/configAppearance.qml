@@ -58,6 +58,7 @@ KCM.SimpleKCM {
     property int cfg_dateShadowRadius
     property int cfg_dateShadowXOffset
     property int cfg_dateShadowYOffset
+    property alias cfg_useMaterialYouColors: useMaterialYouColorsCheckBox.checked
 
     ListModel {
         id: fontsModel
@@ -88,6 +89,13 @@ KCM.SimpleKCM {
         Kirigami.Separator {
             Kirigami.FormData.isSection: true
             Kirigami.FormData.label: "Clock Display Settings"
+        }
+
+        QtControls.CheckBox {
+            Kirigami.FormData.label: "Material You"
+            id: useMaterialYouColorsCheckBox
+            text: i18n("Use system accent color (Material You)")
+            tristate: false
         }
 
         QtControls.CheckBox {

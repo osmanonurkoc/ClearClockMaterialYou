@@ -7,6 +7,11 @@
 
   <group name="Appearance">
 
+    <entry name="useMaterialYouColors" type="Bool">
+      <label>Use system accent color (Material You)</label>
+      <default>true</default>
+    </entry>
+
       <!-- Clock Display Settings -->
     <entry name="clockUse24hFormat" type="Bool">
       <label>Forces the clock to use 12/24 hour time, instead of following the user locale.</label>

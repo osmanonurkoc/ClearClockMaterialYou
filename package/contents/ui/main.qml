@@ -13,6 +13,7 @@ import org.kde.plasma.plasmoid 2.0
 import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
+import org.kde.kirigami as Kirigami
 PlasmoidItem {
     id: root
 
@@ -84,7 +85,7 @@ PlasmoidItem {
 
                 text: getTextFormat
 
-                color: plasmoid.configuration.clockFontColor
+                color: plasmoid.configuration.useMaterialYouColors ? Kirigami.Theme.textColor : plasmoid.configuration.clockFontColor
                 font.family: if (plasmoid.configuration.clockFontFamily === "ccdefault") fontOutfitBold.name
                              else plasmoid.configuration.clockFontFamily
                 font.bold: plasmoid.configuration.clockBoldText
@@ -108,7 +109,7 @@ PlasmoidItem {
 
                 text: Qt.formatDate(currentDateTime, "dddd")
 
-                color: plasmoid.configuration.dayFontColor
+                color: plasmoid.configuration.useMaterialYouColors ? Kirigami.Theme.highlightColor : plasmoid.configuration.dayFontColor
                 font.family: if (plasmoid.configuration.dayFontFamily === "ccdefault") fontSmooch.name
                              else plasmoid.configuration.dayFontFamily
                 font.bold: plasmoid.configuration.dayBoldText
@@ -133,7 +134,7 @@ PlasmoidItem {
 
             text: Qt.formatDate(currentDateTime, plasmoid.configuration.dateCustomDateFormat)
 
-            color: plasmoid.configuration.dateFontColor
+            color: plasmoid.configuration.useMaterialYouColors ? Kirigami.Theme.textColor : plasmoid.configuration.dateFontColor
             font.family: if (plasmoid.configuration.dateFontFamily === "ccdefault") fontOutfitRegular.name
                          else plasmoid.configuration.dateFontFamily
             font.bold: plasmoid.configuration.dateBoldText
